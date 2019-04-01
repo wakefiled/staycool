@@ -33,7 +33,7 @@ common.menuList = [
 	{title:'하나튜브', 	href:'https://www.youtube.com/channel/UCGNbhTiN8xMGOKtiQbMxmkQ'},
 ];
 
-common.nowSeason = 4;
+common.nowSeason = 5;
 
 common.onSearch = function() {
 	var name = $('#airSearchInput').val();
