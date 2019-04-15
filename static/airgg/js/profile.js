@@ -9,7 +9,7 @@ profile.init = function(){
 	var objMenu = $('#alrMenu');
 	var objSeasonMonitor = $('#seasonMonitor');
 	var getParams = common.getRequest();
-	var season = 'ALL';
+	var season = common.season.getSeason(getParams.season);
 
 	common.createHomeBanner(objHome);
 	common.createMenubar(objMenu);
