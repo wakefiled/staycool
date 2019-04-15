@@ -12,6 +12,7 @@ const entry = {
   position: path.join(__dirname, '../src/position/index.js'),
   profile: path.join(__dirname, '../src/profile/index.js'),
   ranking: path.join(__dirname, '../src/ranking/index.js'),
+  stats: path.join(__dirname, '../src/stats/index.js'),
 };
 
 const output = {
@@ -37,6 +38,18 @@ const modules = {
       test: /\.jsx$/,
       use: {
         loader: 'babel-loader',
+      },
+    },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader'],
+    },
+    {
+      test: /\.(png|jpg|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+      loader: 'file-loader',
+      options: {
+        outputPath: '/assets',
+        publicPath: '/static/build/assets',
       },
     },
   ],
@@ -70,36 +83,13 @@ const optimization = {
  */
 const plugins = [
   new CleanWebpackPlugin(),
-  new HtmlWebpackPlugin({
-    inject: false,
-    chunks: ['home'],
-    filename: '../../templates/v1/home.html',
-    template: 'v1/src/home/home.template.html',
-  }),
-  new HtmlWebpackPlugin({
-    inject: false,
-    chunks: ['member'],
-    filename: '../../templates/v1/member.html',
-    template: 'v1/src/member/member.template.html',
-  }),
-  new HtmlWebpackPlugin({
-    inject: false,
-    chunks: ['position'],
-    filename: '../../templates/v1/position.html',
-    template: 'v1/src/position/position.template.html',
-  }),
-  new HtmlWebpackPlugin({
-    inject: false,
-    chunks: ['profile'],
-    filename: '../../templates/v1/profile.html',
-    template: 'v1/src/profile/profile.template.html',
-  }),
-  new HtmlWebpackPlugin({
-    inject: false,
-    chunks: ['ranking'],
-    filename: '../../templates/v1/ranking.html',
-    template: 'v1/src/ranking/ranking.template.html',
-  }),
+  ...['home', 'member', 'position', 'profile', 'ranking', 'stats']
+    .map(value => new HtmlWebpackPlugin({
+      inject: false,
+      chunks: [value],
+      filename: `../../templates/v1/${value}.html`,
+      template: `src/${value}/template.html`,
+    })),
 ];
 
 

@@ -1,7 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-restricted-syntax */
-import { settings, locationSrv, newElement } from '../utils';
-import commonCtrl from './index';
+import {
+  settings, locationSrv, newElement, backendSrv,
+} from '../utils';
+import common from './index';
 
 export const setHomeBanner = (elem) => {
   const imgElem = newElement('img', {
@@ -50,7 +52,7 @@ export const createSeasonMonitor = (elem) => {
   const objSpan = newElement('span', { class: 'input-group-text' });
   objSpan.innerHTML = 'Season';
   const objSelect = newElement('select', { id: 'airSeason', class: 'form-control input-sm-7' }, {
-    change: commonCtrl.changeSeason.bind(commonCtrl),
+    change: common.controller.changeSeason.bind(common.controller),
   });
   const objDummy = newElement('div', { class: 'sub-nav-div-dummy' });
 
@@ -96,4 +98,15 @@ export const setImg = (elem, championInfo, option) => {
     size: 'normal',
   };
   elem.insertAdjacentHTML('beforeend', window.Riot.DDragon.fn.getImg(championInfo, imgOption));
+};
+
+export const setChampionImg = async (elem, champ, option) => {
+  try {
+    // invalid mvc pattern
+    const { data } = await backendSrv.getChampionImg(champ);
+    const championInfo = data.data[champ];
+    setImg(elem, championInfo, option);
+  } catch (e) {
+    console.error(e);
+  }
 };

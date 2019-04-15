@@ -1,35 +1,13 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-console */
-import * as commonView from './view';
-import { backendSrv } from '../utils';
+import * as model from './model';
+import * as view from './view';
+import Controller from './controller';
 
-class CommonCtrl {
-  constructor() {
-    this.update = () => {};
-  }
-
-  async updateVersion() {
-    try {
-      const { data } = await backendSrv.getVersion();
-      commonView.updateVersion(data);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  setUpdateFunc(func) {
-    this.update = func;
-  }
-
-  changeSeason() {
-    const season = document.getElementById('airSeason');
-
-    this.update(season.value);
-  }
-}
-
-const common = new CommonCtrl();
+const common = new Controller();
 
 window.common = common;
 
-export default common;
+export default {
+  model,
+  view,
+  controller: common,
+};
