@@ -301,7 +301,7 @@ common.season.setUpdateFunc = function(func)
 common.season.getSeason = function(season) {
 	if( season === undefined || season === null )
 	{
-		return 4;
+		return 5;
 	}
 
 	return season;
