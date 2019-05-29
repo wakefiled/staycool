@@ -166,7 +166,7 @@ stats.home.initMostChamp = function(){
 stats.home.setMostChamp = function(keys,championPickBan){
 	var obj = $('#clanMostChamp');
 	var $rowDiv = $('<div>',{'class':'row'});
-	var imgOption = {'src':'full','version':'9.2.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
+	var imgOption = {'src':'full','version':'9.10.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
 
 	var winRatio = 0;
 
@@ -259,7 +259,7 @@ stats.pickBan.initTable = function (season){
 
 stats.pickBan.setTable = function (keys, championPickBan){
 	var obj = $('#statsPickBanTableBody');
-	var imgOption = {'src':'sprite','version':'9.2.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
+	var imgOption = {'src':'sprite','version':'9.10.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
 
         for(var i=0 ; i < keys.length; i++)
         {

@@ -131,7 +131,7 @@ profile.setLineInfo = function(lineData)
 profile.setChampTable = function(champData)
 {
 	var table_body = $("#profileChampTableBody");
-	var imgOption = {'src':'sprite','version':'9.2.1','wrap':2,'skin':1,'gray':false,'size':'normal','classes':'profile-champTable_img'};
+	var imgOption = {'src':'sprite','version':'9.10.1','wrap':2,'skin':1,'gray':false,'size':'normal','classes':'profile-champTable_img'};
 
 	var keys = Object.keys(champData);
 

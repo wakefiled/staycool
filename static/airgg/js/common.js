@@ -131,7 +131,7 @@ common.champion.getImg = function(obj, champion, option) {
 	if ( (option === undefined) || (option == null) )
 	{
 		imgOption.src='full';
-		imgOption.version='9.2.1';
+		imgOption.version='9.10.1';
 		imgOption.wrap=2;
 		imgOption.skin=1;
 		imgOption.gray=false;
@@ -145,7 +145,7 @@ common.champion.getImg = function(obj, champion, option) {
 	$.ajax({
 		type: "GET",
 		dataType: "json",
-		url: "/static/airgg/riot_api/9.2.1/data/ko_KR/champion/" + champion + ".json" ,
+		url: "/static/airgg/riot_api/9.10.1/data/ko_KR/champion/" + champion + ".json" ,
 		success: function(data)
 		{
 			var championInfo = data.data[champion];
