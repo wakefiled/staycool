@@ -12,13 +12,13 @@ home.init = function(){
 	common.createMenubar(objMenu);
 	common.createSeasonMonitor(objSeasonMonitor);
 
-	home.setSeasonTitle(season);
+	//home.setSeasonTitle(season);
 	home.getSeasonData(season);
 
 	common.season.setUpdateFunc(function(season){
 		home.clearPage();
 
-		home.setSeasonTitle(season);
+		//home.setSeasonTitle(season);
 		home.getSeasonData(season);
 	});
 
@@ -100,11 +100,11 @@ home.setUserLine = function(line) {
 		line = "Unknown";
 	}
 
-	obj.append( "주 라인: "+ line);
+	obj.append( " / 주 라인: "+ line);
 }
 
 home.setUserKDA = function(result) {
-	var obj = $("#bestUserKDA");
+	var obj = $("#bestUserLine");
 	var kda = 0;
 
 	if( result.death === 0 )
@@ -114,5 +114,5 @@ home.setUserKDA = function(result) {
 
 	kda = ((result.kill + result.asist)/result.death).toFixed(2);
 
-	obj.append("KDA: " + kda);
+	obj.append(" KDA: " + kda);
 }

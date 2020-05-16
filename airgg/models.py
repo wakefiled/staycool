@@ -40,9 +40,6 @@ class UserGameData(models.Model):
 	kill = models.SmallIntegerField()
 	death = models.SmallIntegerField()
 	asist = models.SmallIntegerField()
-	cs = models.SmallIntegerField()
-	gold = models.PositiveIntegerField()
-	level = models.SmallIntegerField()
 	win = models.BooleanField()
 	
 # Create your models here.

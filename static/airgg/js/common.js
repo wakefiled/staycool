@@ -1,4 +1,5 @@
 
+
 var common = {};
 common.champion = {};
 common.user = {};
@@ -10,10 +11,14 @@ common.tier = {
 	'gold':'/static/airgg/img/tier/Gold_Emblem.png',
 	'platinum':'/static/airgg/img/tier/Platinum_Emblem.png',
 	'diamond':'/static/airgg/img/tier/Diamond_Emblem.png',
-	'master':'/static/airgg/img/tier/Master_Emblem.png',
+	'master':'/static/airgg/img/tier/Master_Ring.png',
+	'grandmaster':'/static/airgg/img/tier/Grandmaster_Ring.png',
 	'challenger':'/static/airgg/img/tier/Challenger_Emblem.png',
 };
 
+common.titleImg = {
+	'master':'/static/airgg/img/master.jpg',
+};
 common.lineImg = {
 	'TOP':'/static/airgg/img/Top_icon.png',
 	'JUG':'/static/airgg/img/Jungle_icon.png',
@@ -22,7 +27,7 @@ common.lineImg = {
 	'SUP':'/static/airgg/img/Support_icon.png',
 };
 
-common.homeBanner = "/static/airgg/img/alr_spring.jpg";
+common.homeBanner = "/static/airgg/img/alr_blue_pink.jpg";
 
 common.menuList = [
 	{title:'멤버', 		href:'/member'},
@@ -30,10 +35,211 @@ common.menuList = [
 	{title:'통계', 		href:'/stats'},
 	{title:'포지션 예측', 	href:'/position'},
 	{title:'커뮤니티', 	href:'https://cafe.naver.com/alightrest'},
-	{title:'하나튜브', 	href:'https://www.youtube.com/channel/UCGNbhTiN8xMGOKtiQbMxmkQ'},
+	{title:'뚜튜브', 	href:'https://www.youtube.com/channel/UC_KRwcsVVMOlPS1gx3_nVuA'},
 ];
 
-common.nowSeason = 5;
+common.userNames = [
+    "AlR 고롸",
+    "AlR 공기",
+    "AlR 광민",
+    "AlR 꾸물",
+    "AlR 니프",
+    "AlR 도밍",
+    "AlR 드윈",
+    "AlR 딜폿",
+    "AlR 뚜유",
+    "AlR 띠용",
+    "AlR 루리",
+    "AlR 루하",
+    "AlR 리밋",
+    "AlR 만성",
+    "AlR 망신",
+    "AlR 무디",
+    "AlR 뭉관",
+    "AlR 밍귀",
+    "AlR 발사",
+    "AlR 방신",
+    "AlR 방짜",
+    "AlR 불용",
+    "AlR 성룡",
+    "AlR 세라",
+    "AlR 세진",
+    "AlR 스고",
+    "AlR 슬기",
+    "AlR 알집",
+    "AlR 에르",
+    "AlR 여제",
+    "AlR 영일",
+    "AlR 우직",
+    "AlR 우크",
+    "AlR 원석",
+    "AlR 위강",
+    "AlR 재성",
+    "AlR 재현",
+    "AlR 지훈",
+    "AlR 차전",
+    "AlR 칠초",
+    "AlR 킬먹",
+    "AlR 통닭",
+    "AlR 트윅",
+    "AlR 티어",
+    "AlR 퍼드",
+    "AlR 현태",
+]
+
+
+common.champion_kr_to_eng = {
+    '아트록스':'Aatrox',
+    '아리':'Ahri',
+    '아칼리':'Akali',
+    '알리스타':'Alistar',
+    '아무무':'Amumu',
+    '애니비아':'Anivia',
+    '애니':'Annie',
+    '아펠리오스':'Aphelios',
+    '애쉬':'Ashe',
+    '아우렐리온솔':'AurelionSol',
+    '아지르':'Azir',
+    '바드':'Bard',
+    '블리츠크랭크':'Blitzcrank',
+    '브랜드':'Brand',
+    '브라움':'Braum',
+    '케이틀린':'Caitlyn',
+    '카밀':'Camille',
+    '카시오페아':'Cassiopeia',
+    '초가스':'Chogath',
+    '코르키':'Corki',
+    '다리우스':'Darius',
+    '다이애나':'Diana',
+    '문도':'DrMundo',
+    '드레이븐':'Draven',
+    '에코':'Ekko',
+    '엘리스':'Elise',
+    '이블린':'Evelynn',
+    '이즈리얼':'Ezreal',
+    '피들스틱':'Fiddlesticks',
+    '피오라':'Fiora',
+    '피즈':'Fizz',
+    '갈리오':'Galio',
+    '갱플랭크':'Gangplank',
+    '가렌':'Garen',
+    '나르':'Gnar',
+    '그라가스':'Gragas',
+    '그레이브즈':'Graves',
+    '헤카림':'Hecarim',
+    '하이머딩거':'Heimerdinger',
+    '일라오이':'Illaoi',
+    '이렐리아':'Irelia',
+    '아이번':'Ivern',
+    '잔나':'Janna',
+    '자르반4세':'JarvanIV',
+    '잭스':'Jax',
+    '제이스':'Jayce',
+    '진':'Jhin',
+    '징크스':'Jinx',
+    '카이사':'Kaisa',
+    '칼리스타':'Kalista',
+    '카르마':'Karma',
+    '카서스':'Karthus',
+    '카사딘':'Kassadin',
+    '카타리나':'Katarina',
+    '케일':'Kayle',
+    '케인':'Kayn',
+    '케넨':'Kennen',
+    '카직스':'Khazix',
+    '킨드레드':'Kindred',
+    '클레드':'Kled',
+    '코그모':'KogMaw',
+    '르블랑':'Leblanc',
+    '리신':'LeeSin',
+    '레오나':'Leona',
+    '리산드라':'Lissandra',
+    '루시안':'Lucian',
+    '룰루':'Lulu',
+    '럭스':'Lux',
+    '말파이트':'Malphite',
+    '말자하':'Malzahar',
+    '마오카이':'Maokai',
+    '마스터이':'MasterYi',
+    '미스포츈':'MissFortune',
+    '오공':'MonkeyKing',
+    '모데카이저':'Mordekaiser',
+    '모르가나':'Morgana',
+    '나미':'Nami',
+    '나서스':'Nasus',
+    '노틸러스':'Nautilus',
+    '니코':'Neeko',
+    '니달리':'Nidalee',
+    '녹턴':'Nocturne',
+    '누누':'Nunu',
+    '올라프':'Olaf',
+    '오리아나':'Orianna',
+    '오른':'Ornn',
+    '판테온':'Pantheon',
+    '뽀삐':'Poppy',
+    '파이크':'Pyke',
+    '퀸':'Quinn',
+    '라칸':'Rakan',
+    '람머스':'Rammus',
+    '렉사이':'RekSai',
+    '레넥톤':'Renekton',
+    '렝가':'Rengar',
+    '리븐':'Riven',
+    '럼블':'Rumble',
+    '라이즈':'Ryze',
+    '세주아니':'Sejuani',
+    '세나':'Senna',
+    '세트':'Sett',
+    '샤코':'Shaco',
+    '쉔':'Shen',
+    '쉬바나':'Shyvana',
+    '신지드':'Singed',
+    '사이온':'Sion',
+    '시비르':'Sivir',
+    '스카너':'Skarner',
+    '소나':'Sona',
+    '소라카':'Soraka',
+    '스웨인':'Swain',
+    '사일러스':'Sylas',
+    '신드라':'Syndra',
+    '탐켄치':'TahmKench',
+    '탈리아':'Taliyah',
+    '탈론':'Talon',
+    '타릭':'Taric',
+    '티모':'Teemo',
+    '쓰레쉬':'Thresh',
+    '트리스타나':'Tristana',
+    '트런들':'Trundle',
+    '트린다미어':'Tryndamere',
+    '트위스티드페이트':'TwistedFate',
+    '트위치':'Twitch',
+    '우디르':'Udyr',
+    '우르곳':'Urgot',
+    '바루스':'Varus',
+    '베인':'Vayne',
+    '베이가':'Veigar',
+    '벨코즈':'Velkoz',
+    '바이':'Vi',
+    '빅토르':'Viktor',
+    '블라디미르':'Vladimir',
+    '볼리베어':'Volibear',
+    '워윅':'Warwick',
+    '자야':'Xayah',
+    '제라스':'Xerath',
+    '신짜오':'XinZhao',
+    '야스오':'Yasuo',
+    '요릭':'Yorick',
+    '유미':'Yuumi',
+    '자크':'Zac',
+    '제드':'Zed',
+    '직스':'Ziggs',
+    '질리언':'Zilean',
+    '조이':'Zoe',
+    '자이라':'Zyra',
+    '키아나':'Qiyana',
+}
+
+common.nowSeason = 6;
 
 common.onSearch = function() {
 	var name = $('#airSearchInput').val();
@@ -68,7 +274,7 @@ common.getRequest = function() {
 }
 
 common.createHomeBanner = function(obj) {
-	var $objHomeBanner = $('<img>',{src:common.homeBanner, width:'1060px', onclick:'common.moveHome()'});
+	var $objHomeBanner = $('<img>',{src:common.homeBanner, width:'1080px', borader:'0px', onclick:'common.moveHome()'});
 
 	obj.append($objHomeBanner);
 }
@@ -87,9 +293,9 @@ common.createMenubar = function(obj) {
 
 	{
 		var $liItem = $('<li>',{'class':'alr-menubar li-search'});
-		var $input = $('<input>',{id:'airSearchInput', type:'text', placeholder:'Search..'});
-		var $searchBtn = $('<button>',{id:'airSearchBtn',onclick:'common.onSearch()'});
-		var $searchBtnImg = $('<img>',{src:'/static/airgg/img/search.png'});
+		var $input = $('<input>',{id:'airSearchInput', type:'text', placeholder:'Search..', style:'height:37.9px'});
+		var $searchBtn = $('<button>',{id:'airSearchBtn', class:'alr-search-btn',onclick:'common.onSearch()'});
+		var $searchBtnImg = $('<img>',{src:'/static/airgg/img/search.jpg'});
 
 		$searchBtn.append($searchBtnImg);
 
@@ -128,10 +334,15 @@ common.createSeasonMonitor = function(obj) {
 common.champion.getImg = function(obj, champion, option) {
 	var imgOption = {};
 
+	if ( common.champion_kr_to_eng.hasOwnProperty(champion) === true )
+	{
+		champion = common.champion_kr_to_eng[champion];
+	}
+
 	if ( (option === undefined) || (option == null) )
 	{
 		imgOption.src='full';
-		imgOption.version='9.10.1';
+		imgOption.version='10.8.1';
 		imgOption.wrap=2;
 		imgOption.skin=1;
 		imgOption.gray=false;
@@ -145,7 +356,7 @@ common.champion.getImg = function(obj, champion, option) {
 	$.ajax({
 		type: "GET",
 		dataType: "json",
-		url: "/static/airgg/riot_api/9.10.1/data/ko_KR/champion/" + champion + ".json" ,
+		url: "/static/airgg/riot_api/10.8.1/data/ko_KR/champion/" + champion + ".json" ,
 		success: function(data)
 		{
 			var championInfo = data.data[champion];
@@ -301,7 +512,7 @@ common.season.setUpdateFunc = function(func)
 common.season.getSeason = function(season) {
 	if( season === undefined || season === null )
 	{
-		return 5;
+		return 6;
 	}
 
 	return season;
@@ -466,7 +677,7 @@ common.season.summaryRelative = function(userSeasonData, player)
 
 common.version = function() {
 	var $versionDivObj = $('#airVersion');
-	var $stampObj = $('<p>').text("Produced by 'AlR 펌프'");
+	var $stampObj = $('<p>').text("Produced by 'AlR 뚜유'");
 
 	$versionDivObj.append($stampObj);
 

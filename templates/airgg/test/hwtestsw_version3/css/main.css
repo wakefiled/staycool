@@ -1,0 +1,235 @@
+#debug_demo{
+	position: absolute;
+	right: 50%;
+	top : 50%;
+	font-size : 20px;
+	color: yellow;
+}
+
+#back_board{
+	position:absolute;
+	background-color:black;
+	width:100%;
+	height: 100%;
+	z-index: -5;
+}
+
+#hwtest_avtest{
+	z-index: -3;
+	background-color: transparent;
+}
+
+#hwtest_state{
+	position: absolute;
+	background-color: transparent;
+	right : 10px;
+	top : 80px;
+	top:z 0;
+	z-index: -2;
+}
+
+#thermal_status{
+	position: absolute;
+	background-color: transparent;
+	left : 40px;
+	bottom : 120px;
+	bottom:z 0;
+	z-index: -2;
+	font-size:16pt;
+	font-weight:bold;
+	color:#FF0000;
+}
+
+#hwmute_status{
+	position: absolute;
+	background-color: transparent;
+	left : 40px;
+	bottom : 80px;
+	bottom:z 0;
+	z-index: -2;
+	font-size:16pt;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+
+#volume_status{
+	position: absolute;
+	background-color: transparent;
+	left : 40px;
+	bottom : 40px;
+	bottom:z 0;
+	z-index: -2;
+	font-size:16pt;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+
+#hwtest_control{
+	position: absolute;
+	background-color: transparent;
+	z-index: -1;
+}
+
+video {
+	position: absolute;
+	margin: 0 0 0 0;
+	width: 100%;
+	height: 100%;
+	z-index: -4;
+}
+
+.hwtest-list-dialog{
+	border: 0px;
+	background-color: transparent;
+	display:block;
+	padding : 0px 0px;
+	top : 50px;
+	width:200px;
+}
+.hwtest-list-dialog.hwtest-list-dialog-Channel{
+	left : 88px;
+}
+.hwtest-list-dialog.hwtest-list-dialog-AV{
+	left : 172px;
+}
+.hwtest-list-dialog.hwtest-list-dialog-Memory{
+	left : 220px;
+}
+.hwtest-list-dialog.hwtest-list-dialog-Peripheral{
+	left : 302px;
+}
+.hwtest-list-dialog.hwtest-list-dialog-Functions{
+	left : 394px;
+}
+.hwtest-list-dialog.hwtest-list-dialog-Information{
+	left : 486px;
+}
+
+.hwtest-input-dialog{
+	display:block;
+	left:220px;
+	top : 100px;
+	margin-top : 10px;
+	margin-right:  10px;
+	margin-left:   10px;
+	margin-bottom: 10px;
+}
+.hwtest-input-dialog-item{
+	margin-top : 5px;
+}
+
+.hwtest-input-dialog.channel{
+	width: 700px;
+}
+.hwtest-input-dialog.channel-tr{
+	margin-bottom: 5px;
+}
+
+.hwtest-primary-color{
+	color: #fff;
+	background-color: #337ab7;
+}
+
+.hwtest-input-dialog.playback{
+	width: 450px;
+}
+
+.hwtest-input-dialog.power{
+	width: 450px;
+}
+
+.hwtest-input-dialog.ddr{
+	width: 450px;
+}
+
+.hwtest-input-dialog.hdd{
+	width: 450px;
+}
+
+.hwtest-input-dialog.av{
+	width: 450px;
+}
+
+.hwtest-input-dialog.pingtest{
+	width: 500px;
+}
+.form-control.pingtest{
+	width: 60px;
+}
+
+.form-control.playback{
+	width: 330px;
+}
+
+.form-control.channel{
+	width: 130px;
+}
+
+.btn.btn-lg.btn-primary.pingtest{
+	margin-left : 20px;
+	margin-top : 10px;
+}
+
+.btn.btn-lg.btn-primary.playback{
+	margin-left : 20px;
+	margin-top : 20px;
+}
+
+.btn.btn-lg.btn-primary.ddr{
+	margin-left : 3px;
+	margin-top : 10px;
+}
+
+.btn.btn-lg.btn-primary.hdd{
+	margin-left : 3px;
+	margin-top : 10px;
+}
+
+.btn.btn-lg.btn-primary.channel{
+	margin-left : 3px;
+	margin-top : 10px;
+	width : 140px;
+}
+
+.hwtest-input{
+	margin-top : 5px;
+	margin-bottom: 5px;
+}
+
+.navbar-brand.hwtest-title{
+	margin-bottom: -5px;
+	color:blue;
+}
+
+.navbar-brand.hwtest-logo{
+	margin-right: 20px;
+	margin-bottom: -5px;
+	color:blue;
+}
+
+a.list-group-item.hwtest-melt{
+	background-color: rgba(0,0,0,0.5);
+}
+
+.hwtest-statuswindow{
+	width: 300px;
+}
+
+.hwtest-channelstatuswindow{
+	width: 500px;
+}
+
+.hwtest-messagewindow{
+	width: 300px;
+}
+
+.hwtest-keycodewindow{
+	width: 300px;
+}
+
+p.channel-select-title{
+	margin-left : 5px;
+	margin-right : 5px;
+	margin-top : 5px;
+	margin-bottom : 5px;
+}

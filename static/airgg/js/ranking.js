@@ -19,6 +19,7 @@ ranking.init = function(){
 		$("#seasonTitle").empty();
 		$("#rankingFirst").empty();
 		$("#rankingHighRankers").empty();
+		$("#rankingRankers").empty();
 		$("#rankingList").empty();
 
 		ranking.setSeasonTitle(season);
@@ -46,19 +47,24 @@ ranking.getSeasonData = function(season){
 
 			var keys = Object.keys(summaryUsers);
 			keys.sort(function (a,b) {
-				if( summaryUsers[b].play < 10 )
+				if( summaryUsers[b].play < 5 )
 					return -1;
 
-				if ( summaryUsers[a].play < 10 )
+				if ( summaryUsers[a].play < 5 )
 					return 1;
 
 				return summaryUsers[b].winRatio - summaryUsers[a].winRatio;
 			});
 
 			ranking.setFirstMember(keys[0],summaryUsers[keys[0]]);
-			for ( var i = 1; i < 5; i++ )
+			for ( var i = 1; i < 3; i++ )
 			{
 				ranking.setHighRanker(keys[i],summaryUsers[keys[i]]);
+			}
+
+			for ( var i = 3; i < 7; i++ )
+			{
+				ranking.setRanker(keys[i],summaryUsers[keys[i]]);
 			}
 
 			ranking.setRankingTable(keys, summaryUsers);
@@ -94,9 +100,30 @@ ranking.setFirstMember = function(userName,userData) {
 ranking.setHighRanker = function(userName,userData) {
 	var obj = $("#rankingHighRankers");
 
+	var $div = $('<div class="col-sm-6">');
+	var $tierImage = $('<img>',
+				{'class':'ranking-highest-tier-ring-img',
+				 'src':common.tier.grandmaster});
+	var $infoDiv = $('<div>');
+	var $userIdLink = $('<a>',
+			{'href':'/profile/?userName=' + userName,
+			 'class':'ranking-highest_name'}).text(userName);
+	var $userInfo = $('<p>').append("승률: "+ userData.winRatio +" %<br>게임 수: "+ userData.play);
+	
+	$div.append($tierImage);
+	$infoDiv.append($userIdLink);
+	$infoDiv.append($userInfo);
+	$div.append($infoDiv);	
+
+	obj.append($div);
+}
+
+ranking.setRanker = function(userName,userData) {
+	var obj = $("#rankingRankers");
+
 	var $div = $('<div class="col-sm-3">');
 	var $tierImage = $('<img>',
-				{'class':'ranking-highest-tier-img',
+				{'class':'ranking-highest-tier-ring-img',
 				 'src':common.tier.master});
 	var $infoDiv = $('<div>');
 	var $userIdLink = $('<a>',
@@ -115,7 +142,7 @@ ranking.setHighRanker = function(userName,userData) {
 ranking.setRankingTable = function(userKeys, userDatas) {
 	var table = $("#rankingList");
 
-	for(var i=5 ; i < userKeys.length; i++)
+	for(var i=7 ; i < userKeys.length; i++)
 	{
 		var $tableRowObj = $('<tr>',{'class':'ranking-list-table_row'});
 		var $userIdObj = $('<td>');
@@ -131,12 +158,7 @@ ranking.setRankingTable = function(userKeys, userDatas) {
 		$playObj.text(userDatas[userKeys[i]].play);
 		$winRatioObj.text(userDatas[userKeys[i]].winRatio + " %");
 
-		if( userDatas[userKeys[i]].play < 4 )
-		{
-			$tableRowObj.addClass('table-danger');
-		}
-
-		if( userDatas[userKeys[i]].play < 10 )
+		if( userDatas[userKeys[i]].play < 5 )
 		{
 			$tierImage.attr('src',common.tier.unranked);
 		}

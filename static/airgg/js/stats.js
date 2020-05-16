@@ -5,6 +5,7 @@ stats.home = {};
 stats.pickBan = {};
 stats.title = {};
 stats.title.comments = {
+	'MASTER':'말 안들으면 추방함',
 	'CARRY':'가장 높은 KDA 수치를 보유',
 	'MURDER':'내전에서 가장 높은 킬 수치를 보유',
 	'TERESA':'내전에서 가장 높은 어시스트 수치를 보유',
@@ -128,7 +129,7 @@ stats.home.getMostDuoData = function(season){
 	$.ajax ({
 		type: "GET",
 		dataType: "json",
-		url: "/f/season/duo/?season=0",
+		url: "/f/season/duo/?season="+season,
 		success: function(duoDatas)
 		{
 			var obj = $("#statsMainDiv");
@@ -166,7 +167,7 @@ stats.home.initMostChamp = function(){
 stats.home.setMostChamp = function(keys,championPickBan){
 	var obj = $('#clanMostChamp');
 	var $rowDiv = $('<div>',{'class':'row'});
-	var imgOption = {'src':'full','version':'9.10.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
+	var imgOption = {'src':'full','version':'10.8.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
 
 	var winRatio = 0;
 
@@ -259,7 +260,7 @@ stats.pickBan.initTable = function (season){
 
 stats.pickBan.setTable = function (keys, championPickBan){
 	var obj = $('#statsPickBanTableBody');
-	var imgOption = {'src':'sprite','version':'9.10.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
+	var imgOption = {'src':'sprite','version':'10.8.1','wrap':2,'skin':1,'gray':false,'size':'normal'};
 
         for(var i=0 ; i < keys.length; i++)
         {
@@ -297,19 +298,22 @@ stats.title.getSeasonUserData = function(season){
 
 			summaryUsers = common.season.summaryUsers(userSeasonData);
 
+			var master = stats.title.findUser("AlR 뚜유", summaryUsers);
 			var carry = stats.title.findCarry(summaryUsers);
 			var murder = stats.title.findMurder(summaryUsers);
 			var teresa = stats.title.findTeresa(summaryUsers);
 			var mola = stats.title.findMola(summaryUsers);
 			var joiner = stats.title.findJoiner(summaryUsers);
-			var theJungle = stats.title.findUser("AlR 쩨이",summaryUsers);
+			//var theJungle = stats.title.findUser("AlR 쩨이",summaryUsers);
 
+			
+			stats.title.setTitle(master,"마스터",common.titleImg.master,stats.title.comments.MASTER);
 			stats.title.setTitle(carry,"케리",common.tier.challenger,stats.title.comments.CARRY);
 			stats.title.setTitle(murder,"학살자",common.tier.challenger,stats.title.comments.MURDER);
 			stats.title.setTitle(teresa,"테레사",common.tier.challenger,stats.title.comments.TERESA);
 			stats.title.setTitle(mola,"개복치",common.tier.challenger,stats.title.comments.MOLA);
 			stats.title.setTitle(joiner,"개근",common.tier.challenger,stats.title.comments.JOINER);
-			stats.title.setTitle(theJungle,"더 정글",common.tier.challenger,stats.title.comments.THE_JUNGLE);
+			//stats.title.setTitle(theJungle,"더 정글",common.tier.challenger,stats.title.comments.THE_JUNGLE);
 		},
 		error: function(e)
 		{
@@ -322,10 +326,10 @@ stats.title.findCarry = function(summaryUsers){
 	var user = {'userId':'','kill':'','death':'','asist':'','win':'','play':'','winRatio':''};
 	var keys = Object.keys(summaryUsers);
 	keys.sort(function (a,b) {
-		if( summaryUsers[b].play < 10 )
+		if( summaryUsers[b].play < 5 )
 			return -1;
 
-		if ( summaryUsers[a].play < 10 )
+		if ( summaryUsers[a].play < 5 )
 			return 1;
 
 		var kdab = (summaryUsers[b].kill + summaryUsers[b].asist)/summaryUsers[b].death;
@@ -349,10 +353,10 @@ stats.title.findMurder = function(summaryUsers){
 	var user = {'userId':'','kill':'','death':'','asist':'','win':'','play':'','winRatio':''};
 	var keys = Object.keys(summaryUsers);
 	keys.sort(function (a,b) {
-		if( summaryUsers[b].play < 10 )
+		if( summaryUsers[b].play < 5 )
 			return -1;
 
-		if ( summaryUsers[a].play < 10 )
+		if ( summaryUsers[a].play < 5 )
 			return 1;
 
 		var kb = summaryUsers[b].kill/summaryUsers[b].play;
@@ -376,10 +380,10 @@ stats.title.findTeresa = function(summaryUsers){
 	var user = {'userId':'','kill':'','death':'','asist':'','win':'','play':'','winRatio':''};
 	var keys = Object.keys(summaryUsers);
 	keys.sort(function (a,b) {
-		if( summaryUsers[b].play < 10 )
+		if( summaryUsers[b].play < 5 )
 			return -1;
 
-		if ( summaryUsers[a].play < 10 )
+		if ( summaryUsers[a].play < 5 )
 			return 1;
 
 		var kb = summaryUsers[b].asist/summaryUsers[b].play;
@@ -404,10 +408,10 @@ stats.title.findMola = function(summaryUsers){
 	var user = {'userId':'','kill':'','death':'','asist':'','win':'','play':'','winRatio':''};
 	var keys = Object.keys(summaryUsers);
 	keys.sort(function (a,b) {
-		if( summaryUsers[b].play < 10 )
+		if( summaryUsers[b].play < 5 )
 			return -1;
 
-		if ( summaryUsers[a].play < 10 )
+		if ( summaryUsers[a].play < 5 )
 			return 1;
 
 		var kb = summaryUsers[b].death/summaryUsers[b].play;
@@ -448,6 +452,19 @@ stats.title.findJoiner = function(summaryUsers){
 
 stats.title.findUser = function(userId,summaryUsers){
 	var user = {'userId':'','kill':'','death':'','asist':'','win':'','play':'','winRatio':''};
+
+	if(summaryUsers.hasOwnProperty(userId) === false )
+	{
+		user.userId = userId;
+		user.kill = 0;
+		user.death = 0;
+		user.asist = 0;
+		user.win = 0;
+		user.play = 1;
+		user.winRatio = 0;
+		
+		return user;
+	}
 
 	user.userId = userId;
 	user.kill = summaryUsers[userId].kill;
@@ -516,7 +533,7 @@ stats.position.getUserData = function(season){
 			stats.position.setTitle (mostJugUser,'JUG',common.lineImg.JUG,stats.position.lineComment.JUG);
 			stats.position.setTitle (mostMidUser,'MID',common.lineImg.MID,stats.position.lineComment.MID);
 			stats.position.setTitle (mostBotUser,'BOT',common.lineImg.BOT,stats.position.lineComment.BOT);
-			stats.position.setTitle (mostSupUser,'SUP',common.lineImg.TOP,stats.position.lineComment.SUP);
+			stats.position.setTitle (mostSupUser,'SUP',common.lineImg.SUP,stats.position.lineComment.SUP);
 		},
 		error: function(e)
 		{
@@ -596,7 +613,7 @@ stats.relative.initSearchButton = function(season){
 
 	var $searchButtonImg = $("<img>",{
 				id: 'relativeSearchBtnImg',
-				src: '/static/airgg/img/search.png',
+				src: '/static/airgg/img/search2.jpg',
 				});
 
 	$div.append($divPrependObj);
@@ -688,7 +705,7 @@ stats.relative.setTable = function (keys, relativeObj){
                 var $tableRowObj = $('<tr>');
                 var $userObj = $('<td>');
 		var $userLink = $('<a>',
-			{'href':'/profile/?userName=' + id}).text(id);
+			{'href':'/profile/?userName=' + id,'style':'color:#fff'}).text(id);
                 var $winObj = $('<td>').text(relativeObj[id].win);
                 var $playObj = $('<td>').text(relativeObj[id].play);
                 var $winRatioObj = $('<td>');

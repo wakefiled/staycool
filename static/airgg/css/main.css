@@ -1,6 +1,10 @@
 body {
-	font-family: 'OpenSans-Light';
+	font-family: 'Material-Icons';
+}
 
+.body-class{
+	background: #2f3136;
+	color: #fff;
 }
 
 .alr-search-menu{
@@ -11,10 +15,12 @@ body {
 	background: transparent;
 	border: 0;
 	outline: 0;
+	height: 40px;
 }
 
 .alr-search-input {
 	width: 200px;
+	height: 37px;
 	font-size: 1.5em;
 	text-align: left;
 }
@@ -70,7 +76,6 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	border: 2px solid;
 }
 
 .sub-nav-div{	

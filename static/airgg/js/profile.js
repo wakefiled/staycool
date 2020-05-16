@@ -38,7 +38,7 @@ profile.init = function(){
 profile.setUserName = function(name){
 	var profileNameObj = $('#profileName');
 
-	profileNameObj.append('<H3>' + name + '</H3>');
+	profileNameObj.append('<H3 style="color:#fff">' + name + '</H3>');
 	profileNameObj.attr("href","/profile/?userName=" + name);	
 };
 
@@ -131,7 +131,7 @@ profile.setLineInfo = function(lineData)
 profile.setChampTable = function(champData)
 {
 	var table_body = $("#profileChampTableBody");
-	var imgOption = {'src':'sprite','version':'9.10.1','wrap':2,'skin':1,'gray':false,'size':'normal','classes':'profile-champTable_img'};
+	var imgOption = {'src':'sprite','version':'10.8.1','wrap':2,'skin':1,'gray':false,'size':'normal','classes':'profile-champTable_img'};
 
 	var keys = Object.keys(champData);
 
@@ -233,6 +233,11 @@ profile.initRadarChart = function() {
 profile.setRadarChartBackgroundImg = function(champName)
 {
 	var obj = $("#profileStatus");
+
+	if( common.champion_kr_to_eng.hasOwnProperty(champName) === true)
+	{
+		champName = common.champion_kr_to_eng[champName];
+	}
 	obj.css('background-image','url(/static/airgg/riot_api/img/champion/splash/'+champName+'_0.jpg)');
 	obj.css('background-size','100%');
 }

@@ -3,8 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 <html>
 
-<link rel="stylesheet" href="{% static 'airgg/css/main.css' %}?ver=20190309" />
-<link rel="stylesheet" href="{% static 'airgg/css/stats.css' %}?ver=20190309" />
+<link rel="stylesheet" href="{% static 'airgg/css/main.css' %}?ver=20190429" />
+<link rel="stylesheet" href="{% static 'airgg/css/stats.css' %}?ver=20190429" />
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -20,29 +20,29 @@ $(document).ready(function() {
 });
 </script>
 
-<body>
+<body class="body-class">
 	<div id ='alrHome' class="main-title mb-2"></div>
 	<div id="alrMenu" class="alr-menu"></div>
 	<div id="seasonMonitor" class="sub-nav-div"></div>
 	<div class="stats-title">
 		<ul class="nav">
 			<li class="nav-item">
-				<a class="nav-link" href="/stats/?type=home">메인</a>
+				<a class="nav-link" href="/stats/?type=home" style="color:#fff">메인</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/stats/?type=pick_ban">밴픽</a>
+				<a class="nav-link" href="/stats/?type=pick_ban" style="color:#fff">밴픽</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/stats/?type=unique_title">타이틀</a>
+				<a class="nav-link" href="/stats/?type=unique_title" style="color:#fff">타이틀</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/stats/?type=position_rank">포지션랭킹</a>
+				<a class="nav-link" href="/stats/?type=position_rank" style="color:#fff">포지션랭킹</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/stats/?type=relative_total">상대전적</a>
+				<a class="nav-link" href="/stats/?type=relative_total" style="color:#fff">상대전적</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/stats/?type=for_manager">시즌출석률</a>
+				<a class="nav-link" href="/stats/?type=for_manager" style="color:#fff">시즌출석률</a>
 			</li>
 		</ul>
 	</div>
@@ -51,8 +51,8 @@ $(document).ready(function() {
 	</div>
 	
 	<script type="text/javascript" src="{% static 'airgg/riot_api/dragonhead.js' %}"></script>
-	<script type="text/javascript" src="{% static 'airgg/riot_api/9.10.1/manifest.js' %}"></script>
-	<script type="text/javascript" src="{% static 'airgg/riot_api/9.10.1/js/dragonmagic.js' %}"></script>
+	<script type="text/javascript" src="{% static 'airgg/riot_api/10.8.1/manifest.js' %}"></script>
+	<script type="text/javascript" src="{% static 'airgg/riot_api/10.8.1/js/dragonmagic.js' %}"></script>
 
 </body>
 <footer id="airFooter" class="main-func-div">

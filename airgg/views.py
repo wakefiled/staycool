@@ -15,7 +15,9 @@ from .models import Line
 from .models import Ban
 from .models import UserGameData
 
-from .forms import PostForm
+from .forms import BanForm
+from .forms import GameForm
+from .forms import UserGameDataForm
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -76,11 +78,11 @@ def profile(request):
 	return render(request, "airgg/profile.html")
 
 def dev(request):
-	return render(request, "airgg/test.html")
+	#return render(request, "airgg/test/hwtestsw_version3/index.html")
+	return render(request, "airgg/test_input.html")
 
-def input_users(request):
-	form = PostForm()
-	return render(request, "airgg/input.html", {"form":form})
+def input(request):
+	return render(request, "airgg/input.html")
 
 def filter_members(request):
 	queryset = Users.objects.all()
@@ -282,4 +284,33 @@ def filter_update_date(request):
 
 	return HttpResponse(json.dumps(updateDate), content_type='application/json')
 
+import ast
+def update_game(request):
+	if request.method == "POST":
+		data = request.POST.get('updateData')
+		season = request.POST.get('season')
+		nowdate = datetime.now()
+	
+		updateDataDict = ast.literal_eval(data)
+		newGame = Game.objects.create(season=season, date=nowdate)
+		print(newGame.game_num)
+
+		for userGameData in updateDataDict['userGameData']:
+			userGameDataModel = UserGameData.objects.create(
+                                user_id = Users.objects.get(user_id = userGameData['user']),
+                                game_num = Game.objects.get(game_num = newGame.game_num),
+                                champion = Champion.objects.get(champion = userGameData['champion']),
+                                line = Line.objects.get(line = userGameData['line']),
+                                kill = userGameData['kill'],
+                                death = userGameData['death'],
+                                asist = userGameData['asist'],
+                                win = userGameData['win'])
+
+		for banData in updateDataDict['banList']:
+			banDataModel = Ban.objects.create(
+				champion = Champion.objects.get(champion = banData['champion']),
+				game_num = Game.objects.get(game_num = newGame.game_num))
+		return HttpResponse(newGame.game_num)
+	else:
+		return HttpResponse("Fail")
 

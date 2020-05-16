@@ -3,16 +3,16 @@
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 <html>
 
-<link rel="stylesheet" href="{% static 'airgg/css/main.css' %}?ver=20190309" />
-<link rel="stylesheet" href="{% static 'airgg/css/ranking.css' %}?ver=20190309"/>
+<link rel="stylesheet" href="{% static 'airgg/css/main.css' %}?ver=20200503" />
+<link rel="stylesheet" href="{% static 'airgg/css/ranking.css' %}?ver=20200503"/>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
-<script type="text/javascript" src="{% static 'airgg/js/common.js' %}?ver=20190415"></script>
-<script type="text/javascript" src="{% static 'airgg/js/ranking.js' %}?ver=20190415"></script>
+<script type="text/javascript" src="{% static 'airgg/js/common.js' %}?ver=20200503"></script>
+<script type="text/javascript" src="{% static 'airgg/js/ranking.js' %}?ver=20200503"></script>
 <script>
 
 $(document).ready(function() {
@@ -20,14 +20,14 @@ $(document).ready(function() {
 });
 
 </script>
-<body>
+<body class="body-class">
 	<div id ='alrHome' class="main-title mb-2"></div>
 	<div id="alrMenu" class="alr-menu"></div>
 	<div id="seasonMonitor" class="sub-nav-div"></div>
 
 	<script type="text/javascript" src="{% static 'airgg/riot_api/dragonhead.js' %}"></script>
-	<script type="text/javascript" src="{% static 'airgg/riot_api/9.10.1/manifest.js' %}"></script>
-	<script type="text/javascript" src="{% static 'airgg/riot_api/9.10.1/js/dragonmagic.js' %}"></script>
+	<script type="text/javascript" src="{% static 'airgg/riot_api/10.8.1/manifest.js' %}"></script>
+	<script type="text/javascript" src="{% static 'airgg/riot_api/10.8.1/js/dragonmagic.js' %}"></script>
 
 	<div class="main-func-div col-lg-7">
 		<h3 id="seasonTitle"></h3>
@@ -36,6 +36,9 @@ $(document).ready(function() {
 		</div>
 
 		<div id="rankingHighRankers" class="row ranking-highest">
+		</div>
+
+		<div id="rankingRankers" class="row ranking-highest">
 		</div>
 
 		<table class="table table-hover">

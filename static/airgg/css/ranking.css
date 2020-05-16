@@ -15,7 +15,7 @@ body {
 }
 
 .ranking-highest_name {
-	color: black;
+	color: #fff;
 }
 
 .ranking-tier-img {
@@ -25,4 +25,9 @@ body {
 .ranking-highest-tier-img {
 	width: 100px;
 	height: 100px;
+}
+
+.ranking-highest-tier-ring-img {
+	width: 180px;
+	height: 180px;
 }

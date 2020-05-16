@@ -46,11 +46,13 @@
 }
 
 .stats-relative-searchBtn{
-	background-color:darkgray;
+	background-color: transparent;
+        border: 0;
+        outline: 0;
+        height: 40px;
 }
 
 .stats-title-img {
-	width: 200px;
 	height: 200px;
 }
 

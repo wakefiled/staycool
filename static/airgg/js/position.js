@@ -97,7 +97,7 @@ position.getTeamData = function(teamNum, obj, memberIDs)
 		success: function(teamData)
 		{
 			var imgOption = {'src':'sprite',
-					'version':'9.10.1',
+					'version':'10.8.1',
 					'wrap':2,
 					'skin':1,
 					'gray':false,
@@ -144,10 +144,10 @@ position.getTeamData = function(teamNum, obj, memberIDs)
 
 			var champKeysStWinRatio = Object.keys(teamChampData);
 			champKeysStWinRatio.sort(function(a,b){
-				if( teamChampData[b].play < 10 )
+				if( teamChampData[b].play < 5 )
 					return -1;
 
-				if ( teamChampData[a].play < 10 )
+				if ( teamChampData[a].play < 5 )
 					return 1;
 
 				var beta = teamChampData[b].win/teamChampData[b].play;
